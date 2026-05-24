@@ -1,0 +1,116 @@
+/* ── OpenCoven Weekly Theme ─────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:          #080808;
+  --surface:     #111111;
+  --surface2:    #161616;
+  --border:      #1e1e1e;
+  --violet:      #9A8ECD;
+  --violet-dim:  #6a5fa0;
+  --violet-glow: rgba(154, 142, 205, 0.08);
+  --white:       #f0f0f0;
+  --muted:       #555555;
+  --green:       #6fcf97;
+  --mono:        'JetBrains Mono', monospace;
+}
+
+/* Base slide */
+.slidev-layout {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1 { font-size: 3rem; font-weight: 800; line-height: 1.08; color: var(--white); }
+h2 { font-size: 2.2rem; font-weight: 700; line-height: 1.1; color: var(--white); }
+h3 { font-size: 1.4rem; font-weight: 600; color: var(--white); }
+p  { font-size: 1rem; line-height: 1.6; color: #aaa; }
+
+em  { font-style: normal; color: var(--violet); }
+strong { font-weight: 600; color: var(--white); }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--violet);
+}
+
+/* Utility */
+.label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--violet-dim);
+  margin-bottom: 1rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+.card-title {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 0.5rem;
+}
+
+.badge-shipped {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green);
+  background: rgba(111, 207, 151, 0.1);
+  border: 1px solid rgba(111, 207, 151, 0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.url-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: var(--violet-glow);
+  border: 1px solid rgba(154, 142, 205, 0.2);
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--violet);
+  margin-top: 1rem;
+}
+
+.promise {
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.4rem;
+  border-left: 3px solid var(--violet);
+  background: var(--violet-glow);
+  border-radius: 0 8px 8px 0;
+}
+
+.promise p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.4;
+}
+
+/* Progress bar override */
+.slidev-progress { background: var(--violet) !important; }

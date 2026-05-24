@@ -1,0 +1,19 @@
+{
+  "name": "@opencoven/open-coven-weekly",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "slidev slides/2026-05-24.md --open",
+    "build": "slidev build slides/2026-05-24.md --base /open-coven-weekly/",
+    "export": "slidev export slides/2026-05-24.md --format pdf",
+    "new": "node scripts/new-week.mjs"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.0",
+    "@slidev/theme-default": "latest",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
