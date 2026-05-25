@@ -1,5 +1,5 @@
 <template>
-  <div class="content-layout">
+  <div class="slidev-layout content-layout">
     <slot />
   </div>
 </template>
@@ -11,7 +11,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3.5rem 6rem;
+  align-items: flex-start;
+  padding: 72px;
   overflow: hidden;
 }
 </style>
