@@ -30,6 +30,8 @@ pnpm dev
 pnpm verify
 ```
 
+`pnpm build` keeps the GitHub Pages-style `/open-coven-weekly/` base. Vercel uses `pnpm build:vercel` with a root `/` base and publishes `slides/dist`.
+
 ## Start next week's deck
 
 ```bash

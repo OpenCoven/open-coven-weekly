@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "slidev slides/2026-05-24.md --open",
     "build": "slidev build slides/2026-05-24.md --base /open-coven-weekly/",
+    "build:vercel": "slidev build slides/2026-05-24.md --base /",
     "export": "slidev export slides/2026-05-24.md --format pdf",
-    "verify": "node scripts/verify-week.mjs && pnpm build",
+    "verify": "node scripts/verify-week.mjs && pnpm build && pnpm build:vercel",
     "new": "node scripts/new-week.mjs"
   },
   "dependencies": {
