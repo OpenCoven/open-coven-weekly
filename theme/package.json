@@ -1,10 +1,10 @@
 {
   "name": "coven",
   "displayName": "OpenCoven Weekly Theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "OpenCoven",
   "colors": {
-    "primary": "#9A8ECD",
-    "background": "#080808"
+    "primary": "#8E3DFF",
+    "background": "#050409"
   }
 }

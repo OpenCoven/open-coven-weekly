@@ -11,19 +11,19 @@
 .title-layout {
   position: relative;
   width: 100%; height: 100%;
-  background: #080808;
+  background: #050409;
   display: flex;
   align-items: center;
   padding: 0 72px;
   overflow: hidden;
 }
-.content { max-width: 820px; }
+.content { max-width: 820px; position: relative; z-index: 1; }
 .eyebrow {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #9A8ECD;
+  color: #D26BFF;
   margin-bottom: 1.4rem;
 }
 </style>
