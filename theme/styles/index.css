@@ -1,23 +1,20 @@
 /* ── OpenCoven Weekly Theme ─────────────────────────────── */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.google.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg:                #050409;
-  --surface:           #111018;
-  --surface2:          #191622;
-  --border:            #1e1a2e;
-  --border-violet:     rgba(142, 61, 255, 0.18);
-  --violet:            #8E3DFF;
-  --violet-bright:     #A855F7;
-  --violet-dim:        #D26BFF;
-  --violet-mist:       #C9A7FF;
-  --violet-glow:       rgba(142, 61, 255, 0.08);
-  --violet-glow-strong:rgba(142, 61, 255, 0.15);
-  --white:             #E8E0F0;
-  --muted:             #6B5F82;
-  --green:             #6fcf97;
-  --mono:              'JetBrains Mono', monospace;
+  --bg:            #050409;
+  --surface:       #111018;
+  --surface2:      #191622;
+  --border:        #1e1a2e;
+  --border-v:      rgba(142, 61, 255, 0.20);
+  --violet:        #8E3DFF;          /* accents, glows, borders */
+  --violet-text:   #C9A7FF;          /* labels, em, readable violet */
+  --violet-glow:   rgba(142, 61, 255, 0.08);
+  --white:         #E8E0F0;
+  --muted:         #6B5F82;
+  --green:         #6fcf97;
+  --mono:          'JetBrains Mono', monospace;
 }
 
 /* Base slide */
@@ -77,8 +74,8 @@
   color: #9a90b8;
 }
 
-em  { font-style: normal; color: var(--violet-dim); }
-strong { font-weight: 600; color: var(--white); }
+em     { font-style: normal; color: var(--violet-text); }
+strong { font-weight: 600;   color: var(--white); }
 
 code {
   font-family: var(--mono);
@@ -87,17 +84,18 @@ code {
   border: 1px solid var(--border);
   border-radius: 4px;
   padding: 2px 6px;
-  color: var(--violet-mist);
+  color: var(--violet-text);
 }
 
 /* Utility */
 .label {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--violet-dim);
+  color: var(--violet-text);
   margin-bottom: 18px;
+  opacity: 0.7;
 }
 
 .card {
@@ -105,10 +103,6 @@ code {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px 15px;
-}
-
-.card:hover {
-  border-color: var(--border-violet);
 }
 
 .grid-2,
@@ -120,11 +114,6 @@ code {
 
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-.grid-2 ul,
-.grid-3 ul {
-  margin: 0.6rem 0 0;
-}
 
 .grid-2 li,
 .grid-3 li {
@@ -138,8 +127,9 @@ code {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--violet-dim);
+  color: var(--violet-text);
   margin-bottom: 10px;
+  opacity: 0.8;
 }
 
 .badge-shipped {
@@ -149,7 +139,7 @@ code {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--green);
-  background: rgba(111, 207, 151, 0.1);
+  background: rgba(111, 207, 151, 0.10);
   border: 1px solid rgba(111, 207, 151, 0.25);
   padding: 2px 8px;
   border-radius: 4px;
@@ -163,11 +153,11 @@ code {
   gap: 0.5rem;
   padding: 6px 14px;
   background: var(--violet-glow);
-  border: 1px solid var(--border-violet);
+  border: 1px solid var(--border-v);
   border-radius: 6px;
   font-family: var(--mono);
   font-size: 13px;
-  color: var(--violet-mist);
+  color: var(--violet-text);
   margin-top: 16px;
 }
 
@@ -219,7 +209,7 @@ code {
   grid-column: span 4;
   min-height: 110px;
   background: var(--surface2);
-  border-color: var(--border-violet);
+  border-color: var(--border-v);
 }
 
 .node span {
@@ -232,9 +222,7 @@ code {
   letter-spacing: 0.08em;
 }
 
-.edge {
-  display: none;
-}
+.edge { display: none; }
 
 .api-summary {
   display: grid;
@@ -250,22 +238,16 @@ code {
   padding: 0.9rem;
 }
 
-.api-summary strong,
+.api-summary strong { display: block; font-size: 0.86rem; }
 .api-summary span {
   display: block;
-}
-
-.api-summary strong {
-  font-size: 0.86rem;
-}
-
-.api-summary span {
   margin-top: 0.35rem;
   color: var(--muted);
   font-size: 0.72rem;
   line-height: 1.35;
 }
 
+/* API Explorer */
 .api-explorer {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
@@ -297,18 +279,12 @@ code {
 }
 
 .endpoint-list button.active {
-  border-color: var(--border-violet);
+  border-color: var(--border-v);
   background: var(--violet-glow);
 }
 
-.endpoint-list button span {
-  font-size: 0.84rem;
-  font-weight: 650;
-}
-
-.endpoint-list button code {
-  font-size: 0.68rem;
-}
+.endpoint-list button span { font-size: 0.84rem; font-weight: 650; }
+.endpoint-list button code { font-size: 0.68rem; }
 
 .endpoint-detail {
   min-width: 0;
@@ -327,11 +303,7 @@ code {
   margin-bottom: 0.9rem;
 }
 
-.method-row {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-}
+.method-row { display: flex; align-items: center; gap: 0.65rem; }
 
 .method {
   display: inline-flex;
@@ -359,9 +331,7 @@ code {
   gap: 0.8rem;
 }
 
-.payload-grid section {
-  min-width: 0;
-}
+.payload-grid section { min-width: 0; }
 
 .payload-grid h3 {
   margin: 0 0 0.45rem;
@@ -386,34 +356,30 @@ code {
   white-space: pre-wrap;
 }
 
-/* Progress bar override */
+/* Progress bar */
 .slidev-progress { background: var(--violet) !important; }
 
 /* Cover left-edge accent */
 .slidev-layout::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 3px; height: 100vh;
   background: transparent;
   pointer-events: none;
 }
 
 .slidev-layout.cover::before {
-  background: linear-gradient(180deg, var(--violet) 0%, var(--violet-bright) 100%);
+  background: var(--violet);
 }
 
-/* Cover glow */
+/* Cover ambient glow */
 .slidev-layout.cover::after {
   content: "";
   position: fixed;
-  top: -20%;
-  right: -10%;
-  width: 480px;
-  height: 480px;
-  background: radial-gradient(circle, rgba(142, 61, 255, 0.12) 0%, transparent 70%);
+  top: -20%; right: -10%;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(142, 61, 255, 0.10) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -428,11 +394,9 @@ code {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--violet-dim);
+  color: var(--violet-text);
   margin-bottom: 24px;
 }
 
 .slidev-page,
-.slidev-page > div {
-  background: var(--bg) !important;
-}
+.slidev-page > div { background: var(--bg) !important; }

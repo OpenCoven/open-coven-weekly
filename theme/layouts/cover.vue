@@ -23,7 +23,7 @@
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #D26BFF;
+  color: #C9A7FF;
   margin-bottom: 1.4rem;
 }
 </style>
