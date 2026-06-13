@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "slidev slides/2026-06-07.md --open",
-    "build": "slidev build slides/2026-06-07.md --base /open-coven-weekly/",
-    "build:vercel": "slidev build slides/2026-06-07.md --base /",
-    "export": "slidev export slides/2026-06-07.md --format pdf",
+    "dev": "slidev slides/2026-06-12.md --open",
+    "build": "slidev build slides/2026-06-12.md --base /open-coven-weekly/",
+    "build:vercel": "slidev build slides/2026-06-12.md --base /",
+    "export": "slidev export slides/2026-06-12.md --format pdf",
     "verify": "node scripts/verify-week.mjs && pnpm build && pnpm build:vercel",
     "new": "node scripts/new-week.mjs"
   },
