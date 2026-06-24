@@ -18,6 +18,27 @@ for (const file of requiredFiles) {
 const slides = readFileSync(latestDeck.relativePath, 'utf8')
 const explorer = readFileSync('theme/components/ApiExplorer.vue', 'utf8')
 
+if (/\n---\n\s*\n---\n/.test(slides)) {
+  throw new Error(`Blank slide separator found in ${latestDeck.relativePath}`)
+}
+
+const slideSections = slides.split(/\n(?=---\n(?:theme|layout):)/)
+
+for (const [index, slide] of slideSections.entries()) {
+  if (!/<!--[\s\S]*?-->/.test(slide)) {
+    throw new Error(`Missing speaker notes in ${latestDeck.relativePath} slide ${index + 1}`)
+  }
+
+  const visibleBody = slide
+    .replace(/^---[\s\S]*?---\n/, '')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .trim()
+
+  if (visibleBody.length === 0) {
+    throw new Error(`Blank slide body found in ${latestDeck.relativePath} slide ${index + 1}`)
+  }
+}
+
 const [year, month, day] = latestDeck.date.split('-').map(Number)
 const longDate = new Date(Date.UTC(year, month - 1, day, 12)).toLocaleDateString('en-US', {
   month: 'long',

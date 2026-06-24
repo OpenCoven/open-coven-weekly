@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 
 import { spawnSync } from 'node:child_process'
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 
 import { resolveLatestDeck } from './deck-utils.mjs'
 
-const [command = 'dev', ...args] = process.argv.slice(2)
+const [command = 'dev', ...rawArgs] = process.argv.slice(2)
+const args = rawArgs.filter((arg) => arg !== '--')
 const deck = resolveLatestDeck()
+const localSlidev = join(
+  process.cwd(),
+  'node_modules',
+  '.bin',
+  process.platform === 'win32' ? 'slidev.cmd' : 'slidev',
+)
+const slidevBin = existsSync(localSlidev) ? localSlidev : 'slidev'
 
 const slidevArgs = (() => {
   if (command === 'dev') {
@@ -21,7 +31,7 @@ const slidevArgs = (() => {
 
 console.log(`Using latest deck: ${deck.relativePath}`)
 
-const result = spawnSync('slidev', slidevArgs, {
+const result = spawnSync(slidevBin, slidevArgs, {
   stdio: 'inherit',
   shell: process.platform === 'win32',
 })
