@@ -25,7 +25,7 @@ pnpm new       # scaffolds slides/YYYY-MM-DD.md from template
 pnpm dev       # live preview
 ```
 
-> **Note:** After scaffolding, update the `dev` script in `package.json` to point at the new file if it references a specific filename.
+The dev, build, Vercel build, export, and verify scripts automatically use the latest dated deck in `slides/`.
 
 ---
 
@@ -133,6 +133,8 @@ Charm sources content from merged PRs (`gh pr list`), release notes (`gh release
 ## Deployment
 
 Vercel auto-deploys on every push to `main`. Preview the live deck at the configured Vercel domain.
+
+Deployment uses `pnpm build:vercel`, which resolves the newest `slides/YYYY-MM-DD.md` file and publishes `slides/dist`.
 
 ---
 

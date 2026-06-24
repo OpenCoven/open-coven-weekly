@@ -6,7 +6,7 @@ Weekly Open Coven slide decks: [Slidev](https://sli.dev)-powered, dark-themed, r
 
 ```text
 slides/              # One .md file per Sunday
-  2026-05-24.md      # This week's deck
+  YYYY-MM-DD.md      # Dated deck files; latest date is published
   template.md        # Base template for new weeks
 theme/               # @opencoven/slidev-theme-coven
   layouts/           # cover.vue, default.vue
@@ -14,7 +14,8 @@ theme/               # @opencoven/slidev-theme-coven
   styles/            # index.css (violet/black system)
 scripts/
   new-week.mjs       # Scaffold next Sunday's deck
-  verify-week.mjs    # Checks required deck/API content, then builds
+  slidev-current.mjs # Runs Slidev against the latest dated deck
+  verify-week.mjs    # Checks the latest deck/API content, then builds
 ```
 
 ## Run this week's deck
@@ -31,6 +32,8 @@ pnpm verify
 ```
 
 `pnpm build` keeps the GitHub Pages-style `/open-coven-weekly/` base. Vercel uses `pnpm build:vercel` with a root `/` base and publishes `slides/dist`.
+
+All Slidev commands resolve the latest `slides/YYYY-MM-DD.md` file automatically.
 
 ## Start next week's deck
 

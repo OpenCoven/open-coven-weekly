@@ -1,7 +1,11 @@
 import { readFileSync } from 'node:fs'
 
+import { resolveLatestDeck } from './deck-utils.mjs'
+
+const latestDeck = resolveLatestDeck()
+
 const requiredFiles = [
-  'slides/2026-05-24.md',
+  latestDeck.relativePath,
   'theme/components/ApiExplorer.vue',
   'theme/styles/index.css',
   'README.md',
@@ -11,22 +15,40 @@ for (const file of requiredFiles) {
   readFileSync(file, 'utf8')
 }
 
-const slides = readFileSync('slides/2026-05-24.md', 'utf8')
+const slides = readFileSync(latestDeck.relativePath, 'utf8')
 const explorer = readFileSync('theme/components/ApiExplorer.vue', 'utf8')
 
+const [year, month, day] = latestDeck.date.split('-').map(Number)
+const longDate = new Date(Date.UTC(year, month - 1, day, 12)).toLocaleDateString('en-US', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+})
+
 const requiredSlideText = [
-  'Coven is not a harness',
-  'coven-docs is *live*',
-  'OpenCoven/feedback',
-  'Open Sesame',
-  'coven.daemon.v1',
-  '<ApiExplorer />',
+  'theme: ../theme',
+  'layout: cover',
+  'layout: default',
+  'discord.gg/opencoven',
 ]
 
 for (const text of requiredSlideText) {
   if (!slides.includes(text)) {
     throw new Error(`Missing slide text: ${text}`)
   }
+}
+
+if (!/^title:\s*.+$/m.test(slides)) {
+  throw new Error(`Missing frontmatter title in ${latestDeck.relativePath}`)
+}
+
+if (!slides.includes(latestDeck.date) && !slides.includes(longDate)) {
+  throw new Error(`Missing latest deck date (${latestDeck.date} or ${longDate}) in ${latestDeck.relativePath}`)
+}
+
+if (!slides.includes('<!--') || !slides.includes('-->')) {
+  throw new Error(`Missing speaker notes in ${latestDeck.relativePath}`)
 }
 
 const requiredEndpoints = [
@@ -43,4 +65,4 @@ for (const endpoint of requiredEndpoints) {
   }
 }
 
-console.log('Weekly Open Coven deck checks passed.')
+console.log(`Weekly Open Coven deck checks passed for ${latestDeck.relativePath}.`)
